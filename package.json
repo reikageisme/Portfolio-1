@@ -4,8 +4,8 @@
   "description": "Portfolio with Express backend",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node database.js && node server.js",
+    "dev": "node database.js && node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
