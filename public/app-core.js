@@ -225,12 +225,25 @@ function renderExperience(exp, lang) {
     const el = document.getElementById('experienceContent');
     if(!el || !exp) return;
 
-    el.innerHTML = exp.map(e => `
+    el.innerHTML = exp.map(e => {
+        let job = e.job;
+        let period = e.period;
+        let desc = e.description;
+        if (lang === 'en') {
+            job = e.job_en || translate(e.job, lang);
+            period = e.period_en || translate(e.period, lang);
+            desc = e.description_en || translate(e.description, lang);
+        } else {
+            job = translate(e.job, lang);
+            period = translate(e.period, lang);
+            desc = translate(e.description, lang);
+        }
+        return `
         <li>
-            <strong>${translate(e.job, lang)} (${translate(e.period, lang)})</strong>
-            ${translate(e.description, lang)}
+            <strong>${job} (${period})</strong>
+            ${desc}
         </li>
-    `).join('');
+    `}).join('');
 }
 
 function renderProjects(projects, lang) {
