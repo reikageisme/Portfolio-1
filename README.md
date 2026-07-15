@@ -83,33 +83,45 @@ Toàn bộ dữ liệu được tổng hợp vào duy nhất một RESTful Endpo
 
 ## 🚀 Hướng dẫn Cài đặt & Triển khai (Installation & Deployment)
 
-Việc khởi chạy dự án cực kỳ đơn giản, chỉ cần môi trường của bạn đã cài đặt sẵn [Node.js (v14+)](https://nodejs.org/).
+Việc khởi chạy dự án cực kỳ đơn giản. Bạn có 2 cách để chạy:
 
-### Bước 1: Sao chép dự án về máy
-```bash
-git clone https://github.com/reikageisme/Portfolio-1.git
-cd Portfolio-1
-```
+### Cách 1: Chạy bằng Docker (Khuyên dùng cho Máy chủ / VPS)
 
-### Bước 2: Cài đặt các gói phụ thuộc (Dependencies)
-Môi trường backend sử dụng Express và SQLite:
-```bash
-npm install express sqlite3 cors
-```
+Dự án đã được tích hợp sẵn cấu hình Docker để triển khai nhanh gọn, tự động hóa toàn bộ luồng tạo Database.
 
-### Bước 3: Khởi tạo dữ liệu (Seeding Database)
-Chạy script để hệ thống tự động tạo file `portfolio.db` và chèn các dữ liệu cá nhân có sẵn:
-```bash
-node database.js
-```
-*(Kết quả mong đợi: `Database setup complete` và hệ thống sẽ thông báo chèn thành công các bản ghi).*
+1. **Clone repository**:
+   ```bash
+   git clone https://github.com/reikageisme/Portfolio-1.git
+   cd Portfolio-1
+   ```
 
-### Bước 4: Khởi động Server
-```bash
-node server.js
-```
-Máy chủ sẽ lắng nghe ở cổng mặc định. Bạn hãy mở trình duyệt và truy cập vào:
-👉 **http://localhost:3000**
+2. **Khởi chạy bằng Docker Compose**:
+   ```bash
+   docker-compose up -d --build
+   ```
+   *Lệnh này sẽ tự động tải các gói cài đặt, sinh dữ liệu mẫu (Seeding) nếu file DB chưa có, và chạy Web Server ở cổng 3000.*
+
+### Cách 2: Chạy trực tiếp bằng Node.js (Môi trường Dev)
+
+1. **Clone repository**:
+   ```bash
+   git clone https://github.com/reikageisme/Portfolio-1.git
+   cd Portfolio-1
+   ```
+
+2. **Cài đặt thư viện**:
+   ```bash
+   npm install express sqlite3 cors
+   ```
+
+3. **Khởi động Máy chủ**:
+   ```bash
+   npm start
+   ```
+   *(Lệnh này sẽ tự động gọi file database.js để sinh dữ liệu trước, rồi mới chạy server.js).*
+
+4. **Truy cập trang web**:
+   Mở trình duyệt và truy cập vào `http://localhost:3000`
 
 ---
 
