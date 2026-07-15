@@ -48,15 +48,18 @@ app.get('/api/profile', async (req, res) => {
         const experience = await fetchAll("SELECT * FROM experience");
         const socials = await fetchAll("SELECT * FROM socials");
         const payment = await fetchAll("SELECT * FROM payment");
+        const projects = await fetchAll("SELECT * FROM projects");
+        const achievements = await fetchAll("SELECT * FROM achievements");
 
         const profileData = {
             ...profileInfo,
             contact: contactInfo || {},
-            skills: skills.map(s => s.name),
+            skills: skills,
             experience: experience,
+            projects: projects,
+            achievements: achievements,
             socials: socials,
-            payment: payment,
-            songs: []
+            payment: payment
         };
 
         res.json(profileData);

@@ -7,6 +7,7 @@ const i18n = {
         'contact': '<i class="fa-solid fa-envelope"></i> Liên hệ',
         'skills': '<i class="fa-solid fa-code"></i> Kỹ năng',
         'experience': '<i class="fa-solid fa-briefcase"></i> Kinh nghiệm',
+        'projects': '<i class="fa-solid fa-code-branch"></i> Dự án tiêu biểu',
         'certs': '<i class="fa-solid fa-certificate"></i> Chứng chỉ & Thành tích',
         'payment': '<i class="fa-solid fa-wallet"></i> Donate'
     },
@@ -16,6 +17,7 @@ const i18n = {
         'contact': '<i class="fa-solid fa-envelope"></i> Contact',
         'skills': '<i class="fa-solid fa-code"></i> Skills',
         'experience': '<i class="fa-solid fa-briefcase"></i> Experience',
+        'projects': '<i class="fa-solid fa-code-branch"></i> Projects',
         'certs': '<i class="fa-solid fa-certificate"></i> Certifications & Write-ups',
         'payment': '<i class="fa-solid fa-wallet"></i> Donate'
     }
@@ -123,6 +125,8 @@ function renderAllData(data, lang) {
     renderContact(data.contact, lang);
     renderSkills(data.skills, lang);
     renderExperience(data.experience, lang);
+    renderProjects(data.projects, lang);
+    renderCerts(data.achievements, lang);
     renderPayment(data.payment, lang);
 }
 
@@ -143,6 +147,7 @@ function applyLanguage(lang) {
     if(document.querySelector('#contact h2')) document.querySelector('#contact h2').innerHTML = dict['contact'];
     if(document.querySelector('#skills h2')) document.querySelector('#skills h2').innerHTML = dict['skills'];
     if(document.querySelector('#experience h2')) document.querySelector('#experience h2').innerHTML = dict['experience'];
+    if(document.querySelector('#projects h2')) document.querySelector('#projects h2').innerHTML = dict['projects'];
     if(document.querySelector('#certifications h2')) document.querySelector('#certifications h2').innerHTML = dict['certs'];
     if(document.querySelector('#payment h2')) document.querySelector('#payment h2').innerHTML = dict['payment'];
     
@@ -220,6 +225,26 @@ function renderExperience(exp, lang) {
             ${translate(e.description, lang)}
         </li>
     `).join('');
+}
+
+function renderProjects(projects, lang) {
+    const el = document.getElementById('projectsContent');
+    if(!el || !projects) return;
+
+    el.innerHTML = projects.map(p => {
+        const role = lang === 'en' ? p.role_en : p.role;
+        const desc = lang === 'en' ? p.description_en : p.description;
+        return \`<li><strong>\${p.name}</strong> <span style="font-size:0.85rem;opacity:0.8;">- \${role}</span><br>\${desc}</li>\`;
+    }).join('');
+}
+
+function renderCerts(achievements, lang) {
+    const el = document.getElementById('certsContent');
+    if (!el || !achievements) return;
+
+    el.innerHTML = achievements.map(a => {
+        return \`<li><strong><i class="fa-solid fa-star" style="color: #ffbd2e;"></i> \${a.name}</strong></li>\`;
+    }).join('');
 }
 
 function renderPayment(payment, lang) {
@@ -397,6 +422,7 @@ function initTerminal() {
     function typeLine() {
         if (lineIdx >= lines.length) {
             el.innerHTML = html + '<span class="terminal-cursor"></span>';
+
             setTimeout(() => {
                 // Reset terminal after 10 seconds
                 lineIdx = 0; charIdx = 0; html = "";

@@ -163,6 +163,11 @@ body.dark .glass-effect:hover {
   grid-row: span 2;
 }
 
+.bento-projects {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
 .bento-terminal {
   grid-column: span 4;
 }
@@ -177,7 +182,7 @@ body.dark .glass-effect:hover {
     grid-template-columns: repeat(2, 1fr);
   }
   .bento-header { grid-column: span 2; flex-direction: column; text-align: center; }
-  .bento-about, .bento-socials, .bento-contact, .bento-skills, .bento-experience, .bento-payment {
+  .bento-about, .bento-socials, .bento-contact, .bento-skills, .bento-experience, .bento-certs, .bento-projects, .bento-payment {
     grid-column: span 2;
   }
 }
