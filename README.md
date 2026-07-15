@@ -97,7 +97,7 @@ Dự án đã được tích hợp sẵn cấu hình Docker để triển khai n
 
 2. **Khởi chạy bằng Docker Compose**:
    ```bash
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
    *Lệnh này sẽ tự động tải các gói cài đặt, sinh dữ liệu mẫu (Seeding) nếu file DB chưa có, và chạy Web Server ở cổng 3000.*
 
@@ -138,7 +138,7 @@ Tất cả dữ liệu cá nhân của bạn được lưu trữ trong Database.
   ```bash
   node database.js
   ```
-- Nếu bạn đang dùng Docker, hãy khởi động lại container: `docker-compose restart`.
+- Nếu bạn đang dùng Docker, hãy khởi động lại container: `docker compose restart`.
 
 ### 2. Thay đổi Hình ảnh (Avatar, Background)
 - **Avatar / Logo**: Ghi đè file ảnh của bạn vào đường dẫn `public/img/avata.jpg`. Khuyến nghị dùng ảnh vuông (tỉ lệ 1:1) để viền tròn đẹp nhất.
