@@ -1,0 +1,14 @@
+{
+  "name": "porfolio",
+  "version": "1.0.0",
+  "description": "Portfolio with Express backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  }
+}
