@@ -202,16 +202,22 @@ function renderSkills(skills, lang) {
     const el = document.getElementById('skillsContent');
     if(!el || !skills) return;
 
-    el.innerHTML = skills.map(skillText => {
-        const parts = skillText.split(':');
+    el.innerHTML = skills.map(s => {
+        let text = "";
+        if (typeof s === 'string') {
+            text = translate(s, lang);
+        } else {
+            text = lang === 'en' ? s.name_en : s.name;
+        }
+        
+        if (!text) return '';
+        const parts = text.split(':');
         if(parts.length > 1) {
-            let cat = translate(parts[0].trim(), lang);
+            let cat = parts[0].trim();
             let desc = parts.slice(1).join(':').trim();
-            // Try translating known desc
-            desc = translate(desc, lang);
             return `<li><strong>${cat}</strong>: ${desc}</li>`;
         }
-        return `<li>${translate(skillText, lang)}</li>`;
+        return `<li>${text}</li>`;
     }).join('');
 }
 
