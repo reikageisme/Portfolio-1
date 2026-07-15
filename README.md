@@ -113,6 +113,36 @@ Máy chủ sẽ lắng nghe ở cổng mặc định. Bạn hãy mở trình duy
 
 ---
 
+## 🎨 Hướng dẫn Sử dụng & Tùy chỉnh (Customization Guide)
+
+Dự án được thiết kế để bạn có thể dễ dàng thay đổi thông tin cá nhân thành của riêng mình.
+
+### 1. Thay đổi thông tin cá nhân (Profile, Skills, Projects)
+Tất cả dữ liệu cá nhân của bạn được lưu trữ trong Database. Để thay đổi:
+- Mở file `database.js`.
+- Tìm đến khối dữ liệu bạn muốn đổi (Ví dụ: `const aboutEn = "..."` hoặc mảng `projects`).
+- Chỉnh sửa văn bản theo ý muốn.
+- Chạy lại lệnh sau để ghi đè dữ liệu mới vào DB:
+  ```bash
+  node database.js
+  ```
+- Nếu bạn đang dùng Docker, hãy khởi động lại container: `docker-compose restart`.
+
+### 2. Thay đổi Hình ảnh (Avatar, Background)
+- **Avatar / Logo**: Ghi đè file ảnh của bạn vào đường dẫn `public/img/avata.jpg`. Khuyến nghị dùng ảnh vuông (tỉ lệ 1:1) để viền tròn đẹp nhất.
+- **Hình nền GIF/Video**: Có hai chế độ (Sáng / Tối). 
+  - Ảnh nền sáng: `public/background/x4hnwsvps4h91.gif`
+  - Ảnh nền tối (Dark mode): `public/background/bpxxqqvps4h91.gif`
+  - Chỉ cần ghi đè file có cùng tên, hoặc vào `public/style.css` (phần `.bg-optimized`) để đổi tên file tương ứng.
+
+### 3. Tùy chỉnh Hacker Terminal
+Dòng lệnh Terminal hiển thị trên Web được lập trình hiệu ứng gõ phím (Typewriter) trong file `public/app-core.js`.
+- Mở `app-core.js`.
+- Tìm hàm `initTerminal()`.
+- Bạn có thể thoải mái thêm/sửa các chuỗi lệnh mô phỏng trong mảng `const lines = [...]`.
+
+---
+
 ## 🎯 Định hướng phát triển tương lai (Roadmap)
 - [ ] Thêm chức năng Blog/Write-up để tự động kéo các bài viết CVE phân tích lỗ hổng từ Github/Medium về.
 - [ ] Bổ sung bảng điều khiển Admin Panel (bảo vệ bằng JWT/OTP) để thay đổi thông tin mà không cần sửa code.
