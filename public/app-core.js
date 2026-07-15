@@ -234,7 +234,7 @@ function renderProjects(projects, lang) {
     el.innerHTML = projects.map(p => {
         const role = lang === 'en' ? p.role_en : p.role;
         const desc = lang === 'en' ? p.description_en : p.description;
-        return \`<li><strong>\${p.name}</strong> <span style="font-size:0.85rem;opacity:0.8;">- \${role}</span><br>\${desc}</li>\`;
+        return `<li><strong>${p.name}</strong> <span style="font-size:0.85rem;opacity:0.8;">- ${role}</span><br>${desc}</li>`;
     }).join('');
 }
 
@@ -243,7 +243,7 @@ function renderCerts(achievements, lang) {
     if (!el || !achievements) return;
 
     el.innerHTML = achievements.map(a => {
-        return \`<li><strong><i class="fa-solid fa-star" style="color: #ffbd2e;"></i> \${a.name}</strong></li>\`;
+        return `<li><strong><i class="fa-solid fa-star" style="color: #ffbd2e;"></i> ${a.name}</strong></li>`;
     }).join('');
 }
 
