@@ -1,7 +1,4 @@
-FROM node:20-alpine
-
-# Cài đặt sqlite3 dependencies (python, build-base) cần thiết cho Alpine
-RUN apk add --no-cache python3 make g++
+FROM node:20-slim
 
 WORKDIR /usr/src/app
 
