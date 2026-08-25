@@ -7,4 +7,4 @@ services:
       - "80:80"
     environment:
       - NODE_ENV=production
-      - PORT=3000
+      - PORT=80
