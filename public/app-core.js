@@ -297,6 +297,12 @@ function renderPayment(payment, lang) {
 // ========================
 
 function initCustomCursor() {
+    // Disable on touch devices or small screens to prevent severe lag and save battery
+    if (window.matchMedia("(max-width: 768px)").matches || 
+        (window.matchMedia("(any-hover: none)").matches)) {
+        return;
+    }
+
     const canvas = document.getElementById("spider-canvas");
     if(!canvas) return;
     const ctx = canvas.getContext("2d");

@@ -187,6 +187,31 @@ body.dark .glass-effect:hover {
   }
 }
 
+@media (max-width: 600px) {
+  .bento-container {
+    grid-template-columns: 1fr;
+    width: 95%;
+    gap: 15px;
+    margin: 60px auto 40px auto;
+  }
+  .bento-item {
+    grid-column: 1 / -1 !important;
+  }
+  .bento-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .top-controls {
+    top: 10px;
+    right: 10px;
+    gap: 10px;
+  }
+  .toggle-theme, .toggle-lang {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 /* Header Specifics */
 .image-tidudev {
   width: 150px;
